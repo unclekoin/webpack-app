@@ -1,0 +1,21 @@
+{
+  "name": "webpack-basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "dev:watch": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "author": "Pavel Koryakin",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.2.0",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
