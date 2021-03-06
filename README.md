@@ -120,3 +120,96 @@ import $ from 'jquery';
 
 $( ... )
 ```
+
+## Styles
+
+```bash
+$ npm install --save-dev css-loader
+$ # npm install --save-dev style-loader
+$ npm install --save-dev mini-css-extract-plugin
+$ npm install css-minimizer-webpack-plugin --save-dev
+```
+```js
+// wabpack.config.js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+
+module.exports = {
+  ...
+  plugins: [
+    ...
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin(),
+    ],
+  },
+}
+```
+
+```js
+// index.js
+import './css/index.css';
+```
+
+## webpack-dev-server
+
+https://github.com/webpack/webpack-dev-server
+
+```bash
+$ npm install webpack-dev-server --save-dev
+```
+
+```js
+// webpack.config.js
+var path = require('path');
+
+module.exports = {
+  //...
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 4200,
+  },
+};
+```
+
+```js
+// psckage.json
+ "scripts": {
+    "start": "webpack serve --mode development --open"
+  }
+  ```
+
+  ## source-map-loader
+
+  ```bash
+  $ npm i -D source-map-loader
+  ```
+
+  ```js
+  // webpack.config.js
+    module: {
+    rules: [
+      {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
+    ],
+  },
+  ```
