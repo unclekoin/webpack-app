@@ -1,0 +1,11 @@
+.app {
+  width: 600px;
+  margin: 20px auto 0;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.app h2 {
+  color: red;
+}

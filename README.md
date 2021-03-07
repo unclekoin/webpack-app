@@ -213,3 +213,139 @@ module.exports = {
     ],
   },
   ```
+
+  ## Babel
+
+  https://babeljs.io/
+
+  ```bash
+  $ npm install --save-dev @babel/core @babel/cli @babel/preset-env
+  $ npm install --save @babel/polyfill
+  $ npm install -D babel-loader
+  ```
+
+  ```js
+  // webpack.config.js
+   module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
+  ```
+
+  ```js
+  // .babelrc.json
+  {
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": [
+        "last 5 versions"
+      ]
+    }]
+  ]
+}
+```
+
+## LESS
+
+```bash
+$ npm install less less-loader --save-dev
+```
+
+```js 
+// webpack.config.js
+
+rules: [
+      {
+        test: /\.less$/i,
+        use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        'less-loader'
+        ],
+      },
+    ],
+```
+
+## SASS
+
+```bash
+$ npm install sass-loader sass --save-dev
+```
+
+```js 
+// webpack.config.js
+
+rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+    ],
+```
+
+## React JSX
+
+from babeljs.io
+```bash
+$ npm install react react-dom
+```
+
+```bash
+$ npm install --save-dev @babel/preset-react
+```
+
+```js
+// .babelrc.json
+{
+  "presets": ["@babel/preset-react"]
+}
+```
+
+## TypeScript
+
+from babeljs.io
+```bash
+$ npm install --save-dev @babel/preset-typescript
+```
+
+```js
+// .babelrc.json
+{
+  "presets": ["@babel/preset-typescript"]
+}
+```
+
+```js
+// webpack.config.js
+resolve: {
+  extensions: ['.js', '.ts']
+},
+module: {
+    rules: [
+      {
+        test: /\.m?(js|ts)$/, // !!!
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+    ],
+  },
+  ```
